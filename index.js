@@ -5,7 +5,7 @@ const authentication = require('./jwt')
 
 const app = express()
 
-
+authentication.use()
 database.connect()
 
 app.use(authentication.passport.initialize())
