@@ -4,7 +4,6 @@ const passportJWT = require('passport-jwt')
 const jwt = require('jsonwebtoken')
 var jwtOptions ={}
 exports.use = ()=>{
-    console.log("HERE");
     
     let ExtractJwt = passportJWT.ExtractJwt
     let JwtStrategy = passportJWT.Strategy
@@ -12,7 +11,7 @@ exports.use = ()=>{
     jwtOptions.secretOrKey = "ihm"
 
     let strategy = new JwtStrategy(jwtOptions,(jwt_payload,next)=>{
-        console.log("payload received : "+jwt_payload );
+        console.log("payload received : ",jwt_payload );
         let user = database.getUser({id:jwt_payload.id})
         if(user){
             next(null,user)
